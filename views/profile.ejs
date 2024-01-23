@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pinterest</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+</head>
+
+<body>
+    <div class="containers "w-100>
+        <div class="cards ">
+            <div class="profile-picture">
+                <img src="https://cdn.pixabay.com/photo/2023/06/23/08/51/lord-krishna-8083043_1280.png" alt="">
+            </div>
+            <h2 class="name">
+                <%= user.fullName %>
+            </h2>
+            <h3 class="username">@<%= user.username %>
+            </h3>
+            <!-- <p class="tagline">@tagline</p> -->
+            <p class="description">Har-Har Mahadev</p>
+            <a href="/logout" class="button m-2">Logout</a>
+            <form action="/upload" method="post" enctype="multipart/form-data"> 
+                <!-- multer is a middleware for handling multipart/form-data, which is primarily used for uploading files. -->
+                <input  type="text" name="filecaption" placeholder="Some Caption" id="filecaption">
+                <input type="file" name="file" id="">
+                <input class="submit" id="Submitbtn" type="submit" name="" id="">
+            </form>
+        </div>
+    </div>
+    <div class="containers w-100 ">
+        <div class="cards ">
+            <div class="d-flex justify-content-center">
+                <% user.posts.forEach(function(post){ %>
+                    <div class="cards p-2 m-1" style="width: 18rem;">
+                        <img src="/images/uploads/<%= post.image %>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title " id="CardTitle">
+                                <%= post.imageText %>
+                            </h5>
+                            <p class="card-text"></p>
+                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                    </div>
+                    <% })%>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
